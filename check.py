@@ -54,6 +54,19 @@ def check(king, queen):
     row, like "D6" and "B7":
     """
 
+    col_dict = {
+                'A':1,
+                'B':2,
+                'C':3,
+                'D':4,
+                'E':5,
+                'F':6,
+                'G':7,
+                'H':8
+                    }
+
+    
+
 
 if __name__ == '__main__':
     import doctest
