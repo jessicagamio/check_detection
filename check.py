@@ -65,8 +65,33 @@ def check(king, queen):
                 'H':8
                     }
 
-    
+    k_col = king[0]
+    k_row = int(king[1])
 
+    q_col = queen[0]
+    q_row = int(queen[1])
+
+    if k_col == q_col or k_row == q_row:
+        return True
+
+    else:
+        king_col_num = int(col_dict[k_col])
+        queen_col_num = int(col_dict.get(k_col))
+
+
+        if king_col_num < queen_col_num:
+            vertical_spaces = king_col_num - queen_col_num
+        else:
+            vertical_spaces = queen_col_num - king_col_num
+
+        if k_row < q_row:
+            horizontal_spaces = k_row - q_row
+        else:
+            horizontal_spaces = q_row - k_row
+
+        if vertical_spaces == horizontal_spaces:
+            return True
+    return False
 
 if __name__ == '__main__':
     import doctest
