@@ -54,6 +54,7 @@ def check(king, queen):
     row, like "D6" and "B7":
     """
 
+    # Make dictionary of column letter to column number
     col_dict = {
                 'A':1,
                 'B':2,
@@ -65,32 +66,43 @@ def check(king, queen):
                 'H':8
                     }
 
+    # obtain the row and col locations from the king and queen
     k_col = king[0]
     k_row = int(king[1])
 
     q_col = queen[0]
     q_row = int(queen[1])
 
+    # if king in same row or column as queen. king is under attack
     if k_col == q_col or k_row == q_row:
         return True
 
+    # if king not in same row or column as queen.
+    # check for a diagnal attack
     else:
         king_col_num = int(col_dict[k_col])
-        queen_col_num = int(col_dict.get(k_col))
+        queen_col_num = int(col_dict.get(q_col))
 
 
-        if king_col_num < queen_col_num:
-            vertical_spaces = king_col_num - queen_col_num
-        else:
-            vertical_spaces = queen_col_num - king_col_num
+        # if king_col_num < queen_col_num:
+        #     vertical_spaces = king_col_num - queen_col_num
+        # else:
+        #     vertical_spaces = queen_col_num - king_col_num
 
-        if k_row < q_row:
-            horizontal_spaces = k_row - q_row
-        else:
-            horizontal_spaces = q_row - k_row
+        # if k_row < q_row:
+        #     horizontal_spaces = k_row - q_row
+        # else:
+        #     horizontal_spaces = q_row - k_row
 
+
+        # use absolute value to get the number of spaces
+        vertical_spaces = abs(king_col_num - queen_col_num)
+        horizontal_spaces = abs(k_row - q_row)
+
+        # if spaces vertical and horizontal equal they are diagnol
         if vertical_spaces == horizontal_spaces:
             return True
+            
     return False
 
 if __name__ == '__main__':
